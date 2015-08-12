@@ -1,0 +1,25 @@
+{
+  "name": "module-bundlers",
+  "version": "1.0.0",
+  "description": "Module bundlers 2015\r - Browserify\r - Webpack\r - SystemJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matiishyn/module-bundlers.git"
+  },
+  "author": "Ivan Matiishyn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matiishyn/module-bundlers/issues"
+  },
+  "homepage": "https://github.com/matiishyn/module-bundlers",
+  "devDependencies": {
+    "browserify": "^11.0.1"
+  },
+  "dependencies": {
+    "jquery": "^2.1.4"
+  }
+}
