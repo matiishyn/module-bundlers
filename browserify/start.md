@@ -1,6 +1,6 @@
 https://www.youtube.com/watch?v=CTAa8IcQh1U
 
-**Getting started with Browserify
+## Getting started with Browserify
 
 1. Install Browserify useing npm
 ```
@@ -12,7 +12,7 @@ browserify app.js -o bundle.js
 ```
 3. Write code in app.js but include bundle.js to your html
 
-***Let's add jQuery
+### Let's add jQuery
 Browserify works great with `npm`
 
 1. Install jQuery via npm
@@ -25,7 +25,7 @@ var $ = require('jquery');
 // now you may use $ as jQuery
 ```
 
-***`watchify` - build after every change
+### `watchify` - build after every change
 Install `watchify` and it will build `browserify` after every change
 - install
 ```
