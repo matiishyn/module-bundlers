@@ -55,3 +55,7 @@ var $ = require('jquery'), // require dependencied
 
 // use button as a variable here
 ```
+
+## 3. Transform Your Bundles With Browserify
+(https://youtu.be/Uk2bgp8OLT8)
+this is how you can transform your bundles
