@@ -91,3 +91,22 @@ npm install --save-dev browserify vinyl-source-stream
 
 *`vinyl-source-stream` is a package that converts a Browserify stream into a stream that Gulp actually understands.*
 
+- **and create `browserify` task in `gulp`**
+*Now let's write a task that takes your `app/app.js` file, browserifies it and saves it to `public/js/main.js` to be then included in your HTML file.*
+
+`gulpfile.js`
+```javascript
+...
+var browserify = require('browserify'),
+	source = require('vinyl-source-stream');
+...
+gulp.task('browserify', function() {
+	// get app.js
+	return browserify('./app/app.js')
+		// bundle it and create main.js
+		.bundle()
+		.pipe(source('main.js'))
+		// save to public/js/ directory
+		.pipe(gulp.dest('./public/js/'))
+});
+```
