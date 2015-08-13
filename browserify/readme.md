@@ -111,3 +111,37 @@ gulp.task('browserify', function() {
 		.pipe(gulp.dest('./public/js/'))
 });
 ```
+
+- **download `AngularJS`, create simple application**
+
+```
+npm install --save angular
+```
+
+`app/app.js`
+```javascript
+require('angular'); // require and make 'angular' global
+
+angular.module('app', []).controller('MainCtrl', function($scope) {
+	$scope.msg = 'Hello from Angular';
+});
+```
+
+`public/index.html`
+```html
+<html ng-app="app" lang="en">
+<head>
+	<script src="/js/main.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+	<h1>{{msg}}</h1>
+</body>
+</html>
+```
+
+- **`browserify` code and run application**
+
+```
+gulp browserify
+gulp connect
+```
