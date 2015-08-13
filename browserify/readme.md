@@ -163,3 +163,20 @@ var MainCtrl = require('./controllers/MainCtrl')
 
 angular.module('app', []).controller('MainCtrl', MainCtrl);
 ```
+
+## 5. More modular Angular
+
+`app.js`
+```js
+'use strict';
+
+var angular = require('angular');
+
+angular.module('app', [
+      require('./modules/login').name,
+      require('./modules/charts').name,
+      ...
+    ])
+    .config(require('./common/routes'))
+    .constant('version', require('../package.json').version);
+```
