@@ -180,3 +180,47 @@ angular.module('app', [
     .config(require('./common/routes'))
     .constant('version', require('../package.json').version);
 ```
+
+`modules/charts/index.js`
+```js
+'use strict';
+
+module.exports = angular.module('app.charts', [
+		require('./pie').name,
+		require('./timeline').name,
+		require('./treemap').name,
+		require('./scatterplot').name
+	])
+	.controller('ChartMgrCtrl', require('./ChartMgrCtrl'));
+```
+
+`modules/charts/pie/index.js`
+```js
+'use strict';
+
+var pieChartDirective = require('./PieChartDirective'),
+    pieChartController = require('./PieChartController');
+
+module.exports = angular.module('app.charts.pieChart', [])
+    .directive('pieChart', pieChartDirective)
+    .controller('PieChartCtrl', pieChartController);
+```
+
+`PieChartDirective.js`
+```js
+'use strict';
+
+module.exports = function () {
+    return {
+        scope: {
+            chartData: '=',
+            isMaximized: '='
+        },
+        restrict: 'A',
+        controller: 'PieChartController',
+        link: function (scope, element, attrs) {
+            scope.el = element[0];
+        }
+    };
+};
+```
