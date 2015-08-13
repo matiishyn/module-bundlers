@@ -64,11 +64,12 @@ this is how you can transform your bundles
 Resources:
 http://omarfouad.com/blog/2015/03/21/advanced-angularjs-structure-with-gulp-node-and-browserify/
 
-- *Install some dependencies*
+- **Install some dependencies**
 ```
 npm i gulp gulp-connect gulp-ruby-sass --save-dev
 ```
-- *Let's configure a very simple connect to serve our application*
+- **Let's configure a very simple connect to serve our application**
+
 `gulpfile.js`
 ```javascript
 var gulp = require('gulp'),
@@ -82,3 +83,11 @@ gulp.task('connect', function() {
 	});
 });
 ```
+
+- **Now let's install some additional dependencies**
+```
+npm install --save-dev browserify vinyl-source-stream
+```
+
+*`vinyl-source-stream` is a package that converts a Browserify stream into a stream that Gulp actually understands.*
+
