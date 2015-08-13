@@ -145,3 +145,21 @@ angular.module('app', []).controller('MainCtrl', function($scope) {
 gulp browserify
 gulp connect
 ```
+
+- **Modular Angular**
+
+`app/controllers/MainCtrl.js`
+```javascript
+module.exports = function($scope) {
+	$scope.msg = 'MainCtrl is separated';
+}
+```
+
+`app/app.js`
+```javascript
+require('angular'); // require and make 'angular' global
+
+var MainCtrl = require('./controllers/MainCtrl')
+
+angular.module('app', []).controller('MainCtrl', MainCtrl);
+```
