@@ -59,3 +59,26 @@ var $ = require('jquery'), // require dependencied
 ## 3. Transform Your Bundles With Browserify
 (https://youtu.be/Uk2bgp8OLT8)
 this is how you can transform your bundles
+
+## 4. AngularJS with Gulp and Browserify
+Resources:
+http://omarfouad.com/blog/2015/03/21/advanced-angularjs-structure-with-gulp-node-and-browserify/
+
+- *Install some dependencies*
+```
+npm i gulp gulp-connect gulp-ruby-sass --save-dev
+```
+- *Let's configure a very simple connect to serve our application*
+`gulpfile.js`
+```javascript
+var gulp = require('gulp'),
+	sass = require('gulp-ruby-sass'),
+	connect = require('gulp-connect');
+
+gulp.task('connect', function() {
+	connect.server({
+		root: 'public',
+		port: 4000
+	});
+});
+```
