@@ -1,5 +1,5 @@
 # module-bundlers
 Module bundlers 2015
-- [Browserify](module-bundlers/tree/master/browserify)
+- [Browserify](browserify)
 - Webpack
 - SystemJS
