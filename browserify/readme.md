@@ -224,3 +224,19 @@ module.exports = function () {
     };
 };
 ```
+
+## 6. Angular, ES6, Browserify
+
+resource: https://www.timroes.de/2015/07/29/using-ecmascript-6-es6-with-angularjs-1-x/
+
+When you want to use ES6 modules (export) and import them in another class the compiler has to do something to these modules, when they are compiled to ES5. Babel can convert ES6 modules to CommonJS, AMD, UMD or System modules. The problem is, how are these loaded in the browser. You could compile to AMD and use a library like RequireJS to load these modules in the browser.
+
+#### Dependencies
+```
+npm i gulp browserify babelify vinyl-source-stream vinyl-buffer angular --save-dev
+```
+
+- `vinyl-buffer` - Convert streaming vinyl files to use buffers
+- `vinyl-source-stream` - Use conventional text streams at the start of your gulp or vinyl pipelines
+
+#### Gulp - 'script' task
