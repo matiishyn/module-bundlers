@@ -262,6 +262,8 @@ gulp.task('script', function() {
 });
 ```
 
+#### ES6 Angular 1.x Application
+
 `app.js`
 ```javascript
 import angular from 'angular';
@@ -316,3 +318,5 @@ export default class PersonService {
 	}
 }
 ```
+
+get the whole example here: https://github.com/timroes/angular-es6-sample
