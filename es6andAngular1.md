@@ -61,7 +61,12 @@ export { ProductPageController }
 In order to preserve dependency annotations for minification, we need to use the $inject property notation now:
 
 ```js
-MainController.$inject = ['SearchService'];
+class ThingFactory {
+    constructor($timeout) {
+        // ...
+    }
+}
+ThingFactory.$inject = ['$timeout'];
 ```
 
 ## Services & Controllers
@@ -87,7 +92,7 @@ angular.module('app')
     .service('userService', UserService)
     .controller('MyController', MyController);
 ```
-### Providers
+## Providers
 The provider expects a constructor function which must contain a property named $get, which should be a factory function.
 ```js
 class ThingServiceProvider {
@@ -107,3 +112,8 @@ class ThingServiceProvider {
 angular.module('app')
     .provider('thingService', ThingServiceProvider);
 ```
+
+## [Factories](http://www.michaelbromley.co.uk/blog/350/exploring-es6-classes-in-angularjs-1-x#_section-factories)
+
+
+## next - http://www.michaelbromley.co.uk/blog/350/exploring-es6-classes-in-angularjs-1-x#_section-directives
