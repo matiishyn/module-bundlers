@@ -240,3 +240,79 @@ npm i gulp browserify babelify vinyl-source-stream vinyl-buffer angular --save-d
 - `vinyl-source-stream` - Use conventional text streams at the start of your gulp or vinyl pipelines
 
 #### Gulp - 'script' task
+
+```javascript
+var gulp = require('gulp');
+var babelify = require('babelify');
+var browserify = require('browserify');
+var vinylSourceStream = require('vinyl-source-stream');
+var vinylBuffer = require('vinyl-buffer');
+
+gulp.task('script', function() {
+	var sources = browserify({
+		entries: 'src/scripts/app.js',
+		debug: true
+	})
+	.transform(babelify.configure());
+
+	return sources.bundle()
+		.pipe(vinylSourceStream('app.min.js'))
+		.pipe(vinylBuffer())
+		.pipe(gulp.dest('src/scripts/'));
+});
+```
+
+`app.js`
+```javascript
+import angular from 'angular';
+import HomeController from './controllers/HomeCtrl';
+import NameService from './services/PersonService';
+import {UpperFilter, LowerFilter} from './filters/textFilters';
+
+angular.module('myApp', [])
+	.controller('HomeController', HomeController)
+	.filter('upper', UpperFilter)
+	.filter('lower', LowerFilter)
+	.service('PersonService', NameService);
+```
+
+`HomeCtrl.js`
+```js
+export default function($scope, PersonService) {
+	PersonService.getPerson().promise.then(function(person) {
+		debugger;
+		$scope.person = person;
+	});
+}
+```
+
+`filters`
+```js
+export function UpperFilter() {
+	return function(input) {
+		return input.toUpperCase();
+	};
+}
+
+export function LowerFilter() {
+	return function(input) {
+		return input.toLowerCase();
+	};
+}
+```
+
+`PersonServoce.js`
+```js
+import Person from '../model/Person';
+
+export default class PersonService {
+	constructor($q) {
+		this._$q = $q.defer();
+	}
+
+	getPerson() {
+		this._$q.resolve(new Person().name);
+		return this._$q;
+	}
+}
+```
