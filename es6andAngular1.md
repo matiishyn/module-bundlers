@@ -1,5 +1,6 @@
 Resources:
 - http://blog.thoughtram.io/angularjs/es6/2015/01/23/exploring-angular-1.3-using-es6.html
+- http://www.michaelbromley.co.uk/blog/350/exploring-es6-classes-in-angularjs-1-x
 
 ## Angular and ES6 modules
 
@@ -61,4 +62,48 @@ In order to preserve dependency annotations for minification, we need to use the
 
 ```js
 MainController.$inject = ['SearchService'];
+```
+
+## Services & Controllers
+
+```js
+class UserService {
+    constructor($http) {
+        this.$http = $http;
+    }
+    getFullName() {
+        return this.$http.get('api/user/details');
+    }
+}
+
+class MyController {
+    constructor(userService) {
+        userService.getFullName()
+            .then(result => this.userName = result.fullName);
+    }
+}
+
+angular.module('app')
+    .service('userService', UserService)
+    .controller('MyController', MyController);
+```
+### Providers
+The provider expects a constructor function which must contain a property named $get, which should be a factory function.
+```js
+class ThingServiceProvider {
+    constructor() {
+        this.apiPath = 'default/api';
+    }
+    setApiPath(value) {
+        this.apiPath = value;
+    }
+    $get($http) {
+        return {
+            getThings: () => $http.get(this.apiPath)
+        };
+    }
+}
+
+angular.module('app')
+    .provider('thingService', ThingServiceProvider);
 ```
