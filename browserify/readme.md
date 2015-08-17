@@ -303,12 +303,13 @@ export function LowerFilter() {
 }
 ```
 
-`PersonServoce.js`
+`PersonService.js`
 ```js
 import Person from '../model/Person';
 
 export default class PersonService {
 	constructor($q) {
+		// Angular's DI here
 		this._$q = $q.defer();
 	}
 
