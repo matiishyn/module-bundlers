@@ -69,6 +69,21 @@ class ThingFactory {
 ThingFactory.$inject = ['$timeout'];
 ```
 
+### `ng-annotate`
+```js
+class MyAngularComponent {
+    /*@ngInject*/
+    constructor(dependency1, dependency2) {
+        this.dependency1 = dependency1;
+        // stuff happens here
+    }
+    someMethods() {
+        this.dependency1.doThatThing();
+        // more stuff here
+    }
+}
+```
+
 ## Services & Controllers
 
 ```js
@@ -116,4 +131,28 @@ angular.module('app')
 ## [Factories](http://www.michaelbromley.co.uk/blog/350/exploring-es6-classes-in-angularjs-1-x#_section-factories)
 
 
-## next - http://www.michaelbromley.co.uk/blog/350/exploring-es6-classes-in-angularjs-1-x#_section-directives
+## Directives
+```js
+class MyDirective {
+    constructor($interval) {
+        this.template = '<div>I\'m a directive!</div>'; 
+        this.restrict = 'E'; 
+        this.scope = {} 
+        // etc. for the usual config options 
+
+        // allows us to use the injected dependencies 
+        // elsewhere in the directive (e.g. compile or link function) 
+        this.$interval = $interval; 
+    } 
+
+    // optional link function 
+    link(scope, element) { 
+        this.$interval(() => this.move(element), 1000); 
+    } 
+
+    move(element) {
+        element.css('left', (Math.random() * 500) + 'px'); 
+        element.css('top', (Math.random() * 500) + 'px'); 
+    } 
+}
+```
