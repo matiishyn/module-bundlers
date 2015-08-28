@@ -21,25 +21,25 @@ jspm install myname=npm:underscore
 ## Application
 `lib/bootstrap.js`
 ```js
-    import _ from 'lodash-node/modern/lang/isEqual';
-    import $ from 'jquery';
-    import underscore from 'myname';
+import _ from 'lodash-node/modern/lang/isEqual';
+import $ from 'jquery';
+import underscore from 'myname';
 
-    export function bootstrap() {
-      // bootstrap code here
-    }
+export function bootstrap() {
+  // bootstrap code here
+}
 ```
 `lib/main.js`
 ```js
-    import {bootstrap} from './bootstrap';
-    bootstrap();
+import {bootstrap} from './bootstrap';
+bootstrap();
 ```    
 `index.html`
 ```html
-  <!doctype html>
-  <script src="jspm_packages/system.js"></script>
-  <script src="config.js"></script>
-  <script>
-    System.import('lib/main');
-  </script>
+<!doctype html>
+<script src="jspm_packages/system.js"></script>
+<script src="config.js"></script>
+<script>
+	System.import('lib/main');
+</script>
 ```  
