@@ -3,6 +3,7 @@ jspm is a package manager for the SystemJS universal module loader, built on top
 ## Resources:
 - http://jspm.io/
 - https://github.com/jspm/jspm-cli/wiki/Getting-Started
+- http://developer.telerik.com/featured/choose-es6-modules-today/
 
 # 1. Getting Started
 ## Install JSPM

@@ -158,3 +158,21 @@ class MyDirective {
     } 
 }
 ```
+
+## Styles, Templates
+
+```js
+import 'main.css'; // styles will be loaded automatically
+import angular from 'angular';
+import ngAnimate from 'angular-animate';
+import {MainController as controller} from 'mainController';
+import template from 'mainTemplate.html'; // loading templates
+import childModule from 'childModule/childModule';
+
+let mainModule = angular.module('main', [ngAnimate, childModule])
+    .directive('mainComponent', {
+        return {template, controller};
+    });
+
+export default mainModule;
+```
